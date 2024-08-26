@@ -3,8 +3,9 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-    if current_user
-      redirect_to '/'
+    if params[:name].present?
+      session[:name] = params[:name]
+      redirect_to root_path
     else
       redirect_to '/login'
     end
